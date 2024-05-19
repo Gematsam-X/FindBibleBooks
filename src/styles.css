@@ -1,0 +1,57 @@
+/* Global */
+html {
+  font-weight: bold;
+  font-size: larger;
+  color: tomato;
+  background-color: aquamarine;
+}
+
+/* ID */
+#footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  padding: 20px;
+  text-align: right;
+}
+
+#outputBibleBook {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+#input {
+  font-size: 2rem;
+  text-align: center;
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#title-h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+#searchButton {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: tomato;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#searchButton:hover {
+  background-color: darkred;
+}
+
+/* Classes */
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
