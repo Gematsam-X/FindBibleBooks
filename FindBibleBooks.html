@@ -72,15 +72,13 @@
     <h1 id="title-h1">Digita il libro biblico qui sotto!</h1>
     <div class="container">
       <input
-        onchange="checkBibleBook()"
         autocomplete="off"
         type="text"
         placeholder="Scrivi qui il libro biblico..."
+        onkeydown="handleKeyDown(event)"
         id="input"
       />
-      <button id="searchButton" onclick="checkBibleBook()">
-        Cerca
-      </button>
+      <button id="searchButton" onclick="checkBibleBook()">Cerca</button>
     </div>
     <p id="outputBibleBook">
       Digita qui sopra il libro biblico per trovarlo più velocemente! Riceverai
@@ -92,17 +90,23 @@
         sito internet!
       </h5>
     </footer>
-  </body>
-</html>
     <script>
-      let input = document.getElementById("input").value.toLowerCase();
-      console.log(input);
-      let inputOriginale = document.getElementById("input").value;
+      function handleKeyDown(event) {
+        // Verifica se il tasto premuto è Enter
+        if (event.key === "Enter") {
+          checkBibleBook();
+        }
+      }
+
       function checkBibleBook() {
-        input = document.getElementById("input").value.toLowerCase();
-        originalInput = document.getElementById("input").value;
-        let cleanInput = input.replace(/\s+/g, ' ').trim();
-        switch (cleanInput) {
+        let input = document
+          .getElementById("input")
+          .value.toLowerCase()
+          .replace(/\s+/g, " ")
+          .trim();
+        let originalInput = document.getElementById("input").value;
+
+        switch (input) {
           //SCRITTURE EBRAICO-ARAMAICHE
           case "gen":
           case "genesi":
@@ -236,45 +240,7 @@
             break;
           case "ecclesiaste":
           case "ecc":
-          case "qoelet":
-          case "qoèlet":
-          case "qoélet":
-            document.getElementById("outputBibleBook").innerHTML =
-              '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/ecclesiaste">Ecclesiaste</a>';
-            break;
-          case "cantico dei cantici":
-          case "canticodei cantici":
-          case "cantico deicantici":
-          case "cdc":
-            document.getElementById("outputBibleBook").innerHTML =
-              '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/cantico-dei-cantici">Cantico dei Cantici</a>';
-            break;
-          case "isaia":
-          case "is":
-            document.getElementById("outputBibleBook").innerHTML =
-              '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/isaia">Isaia</a>';
-            break;
-          case "geremia":
-          case "ger":
-            document.getElementById("outputBibleBook").innerHTML =
-              '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/geremia">Geremia</a>';
-            break;
-          case "lamentazioni":
-          case "lam":
-            document.getElementById("outputBibleBook").innerHTML =
-              '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/lamentazioni">Lamentazioni</a>';
-            break;
-          case "ezechiele":
-          case "ezec":
-            document.getElementById("outputBibleBook").innerHTML =
-              '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/ezechiele">Ezechiele</a>';
-            break;
-          case "daniele":
-          case "dan":
-            document.getElementById("outputBibleBook").innerHTML =
-              '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/daniele">Daniele</a>';
-            break;
-          case "osea":
+            input;
           case "os":
             document.getElementById("outputBibleBook").innerHTML =
               '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/">Osea</a>';
@@ -536,17 +502,17 @@
             document.getElementById("outputBibleBook").innerHTML =
               '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/">Bibbia</a>';
             break;
-
           case "reset":
           case "schermatadiinizio":
             input = input;
             document.getElementById("outputBibleBook").innerHTML =
               "Digita qui sopra il libro biblico per trovarlo più velocemente! Riceverai un link per il reindirizzamento.";
             break;
-            case "":
-            case " ":
-                document.getElementById("outputBibleBook").innerHTML = "Per favore digita il libro biblico da cercare nell'input qua sopra."
-                break;
+          case "":
+          case " ":
+            document.getElementById("outputBibleBook").innerHTML =
+              "Per favore digita il libro biblico da cercare nell'input qua sopra.";
+            break;
           case "clear":
             document.getElementById("outputBibleBook").innerHTML = "";
             break;

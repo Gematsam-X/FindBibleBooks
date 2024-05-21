@@ -1,9 +1,19 @@
-function checkBibleBook() {
-  let input = document.getElementById("input").value.toLowerCase();
-  let originalInput = document.getElementById("input").value;
-  let cleanInput = input.replace(/\s+/g, " ").trim();
+function handleKeyDown(event) {
+  // Verifica se il tasto premuto è Enter
+  if (event.key === "Enter") {
+    checkBibleBook();
+  }
+}
 
-  switch (cleanInput) {
+function checkBibleBook() {
+  let input = document
+    .getElementById("input")
+    .value.toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim();
+  let originalInput = document.getElementById("input").value;
+
+  switch (input) {
     //SCRITTURE EBRAICO-ARAMAICHE
     case "gen":
     case "genesi":

@@ -15,10 +15,10 @@
     <h1 id="title-h1">Digita il libro biblico qui sotto!</h1>
     <div class="container">
       <input
-        onchange="checkBibleBook()"
         autocomplete="off"
         type="text"
         placeholder="Scrivi qui il libro biblico..."
+        onkeydown="handleKeyDown(event)"
         id="input"
       />
       <button id="searchButton" onclick="checkBibleBook()">Cerca</button>
