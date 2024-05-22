@@ -122,7 +122,8 @@ function checkBibleBook() {
     case "neemia":
     case "neem":
       document.getElementById("outputBibleBook").innerHTML =
-        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/neemia">Neemia</a>';
+        document.getElementById("outputBibleBook").innerHTML =
+          '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/neemia">Neemia</a>';
       break;
     case "ester":
     case "est":
@@ -147,7 +148,9 @@ function checkBibleBook() {
       break;
     case "ecclesiaste":
     case "ecc":
-      input;
+      document.getElementById("outputBibleBook").innerHTML =
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/ecclesiaste">Ecclesiaste</a>';
+      break;
     case "os":
       document.getElementById("outputBibleBook").innerHTML =
         '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/">Osea</a>';
