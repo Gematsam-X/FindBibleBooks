@@ -148,12 +148,46 @@ function checkBibleBook() {
       break;
     case "ecclesiaste":
     case "ecc":
+    case "qoelet":
       document.getElementById("outputBibleBook").innerHTML =
         '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/ecclesiaste">Ecclesiaste</a>';
       break;
+    case "cantico dei cantici":
+    case "canticodei cantici":
+    case "cantico deicantici":
+    case "cdc":
+      document.getElementById("outputBibleBook").innerHTML =
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/cantico-dei-cantici">Cantico dei Cantici</a>';
+      break;
+    case "isaia":
+    case "is":
+      document.getElementById("outputBibleBook").innerHTML =
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/isaia">Isaia</a>';
+      break;
+    case "geremia":
+    case "ger":
+      document.getElementById("outputBibleBook").innerHTML =
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/geremia">Geremia</a>';
+      break;
+    case "lamentazioni":
+    case "lam":
+      document.getElementById("outputBibleBook").innerHTML =
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/lamentazioni">Lamentazioni</a>';
+      break;
+    case "ezechiele":
+    case "ezec":
+      document.getElementById("outputBibleBook").innerHTML =
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/ezechiele">Ezechiele</a>';
+      break;
+    case "daniele":
+    case "dan":
+      document.getElementById("outputBibleBook").innerHTML =
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/daniele">Daniele</a>';
+      break;
+    case "osea":
     case "os":
       document.getElementById("outputBibleBook").innerHTML =
-        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/">Osea</a>';
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/osea">Osea</a>';
       break;
     case "gioele":
       document.getElementById("outputBibleBook").innerHTML =
@@ -194,7 +228,7 @@ function checkBibleBook() {
     case "aggeo":
     case "agg":
       document.getElementById("outputBibleBook").innerHTML =
-        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/">Aggeo</a>';
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/aggeo">Aggeo</a>';
       break;
     case "zaccaria":
     case "zacc":
@@ -206,6 +240,7 @@ function checkBibleBook() {
       document.getElementById("outputBibleBook").innerHTML =
         '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/malachia">Malachia</a>';
       break;
+
     //SCRITTURE GRECHE CRISTIANE
     case "matteo":
     case "mat":
