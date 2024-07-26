@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Refresh" content="0;url=FindBibleBooks.html">
-    <title>Reindirizzando...</title>
-</head>
-<body>
-    <p>Se non vieni reindirizzato, segui questo <a href="FindBibleBooks.html">link</a>.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Trova libri della Bibbia in modo veloce e semplice"
+    />
+    <meta name="keywords" content="scritture, libri, Bibbia, semplificato" />
+    <title>FindBibleBooks</title>
+    <link rel="icon" href="img/logo.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body link="blue" vlink="blue">
+    <h1 id="title-h1">Digita il libro biblico qui sotto!</h1>
+    <div class="container">
+      <input
+        autocomplete="off"
+        type="text"
+        placeholder="Scrivi qui il libro biblico..."
+        onkeydown="handleKeyDown(event)"
+        id="input"
+      />
+      <button id="searchButton" onclick="checkBibleBook()">Cerca</button>
+    </div>
+    <p id="outputBibleBook">
+      Digita qui sopra il libro biblico per trovarlo più velocemente! Riceverai
+      un link per il reindirizzamento.
+    </p>
+    <footer id="footer">
+      <h5>
+        Bibbia offerta da <a href="https://jw.org/it/">Jw.org</a>. Visita ora il
+        sito internet!
+      </h5>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
 </html>
