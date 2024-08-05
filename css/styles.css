@@ -5,6 +5,18 @@ html {
   color: tomato;
   background-color: aquamarine !important;
 }
+/* Media query */
+@media (prefers-color-scheme: dark) {
+  body {
+      background-color: aquamarine !important;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+      background-color: aquamarine !important;
+  }
+}
 
 /* ID */
 #footer {
