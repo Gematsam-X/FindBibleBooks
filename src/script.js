@@ -155,6 +155,7 @@ function checkBibleBook() {
     case "cantico dei cantici":
     case "canticodei cantici":
     case "cantico deicantici":
+    case "canticodeicantici":
     case "cdc":
       document.getElementById("outputBibleBook").innerHTML =
         '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/cantico-dei-cantici">Cantico dei Cantici</a>';
@@ -262,8 +263,12 @@ function checkBibleBook() {
         '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/giovanni">Giovanni</a>';
       break;
     case "atti":
+    case "attidegliapostoli":
+    case "atti degli apostoli":
+    case "attidegli apostoli":
+    case "atti degliapostoli":
       document.getElementById("outputBibleBook").innerHTML =
-        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/atti">Atti</a>';
+        '<a style="font-size: 5rem;" href="https://www.jw.org/it/biblioteca-digitale/bibbia/bibbia-per-lo-studio/libri/atti">Atti degli Apostoli</a>';
       break;
     case "romani":
     case "rom":
