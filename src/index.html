@@ -11,19 +11,18 @@
     <link rel="icon" href="../assets/favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body link="blue" vlink="blue">
+  <body>
     <h1 id="title-h1">Digita il libro biblico qui sotto!</h1>
     <div class="container">
       <input
         autocomplete="off"
         type="text"
         placeholder="Scrivi qui il libro biblico..."
-        onkeydown="handleKeyDown(event)"
         id="input"
       />
-      <button id="searchButton" onclick="checkBibleBook()">Cerca</button>
+      <button id="searchButton">Cerca</button>
     </div>
-    <p id="outputBibleBook">
+    <p id="output">
       Digita qui sopra il libro biblico per trovarlo più velocemente! Riceverai
       un link per il reindirizzamento.
     </p>
