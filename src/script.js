@@ -84,7 +84,7 @@ function checkBibleBook() {
     return;
   }
 
-  const parts = originalInput.split(/[\s:]+/); // Dividi su spazio o ":" 
+  const parts = originalInput.split(/[\s:]+/); // Dividi su spazio o ":"
   const bookInput = parts[0].trim(); // Primo elemento: libro
   const chapterInput = parts[1]?.trim(); // Secondo elemento: capitolo (se fornito)
   const verseInput = parts[2]?.trim(); // Terzo elemento: versetto (se fornito)
