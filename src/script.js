@@ -111,7 +111,7 @@ function checkBibleBook() {
       // Capitolo e versetto forniti
       const chapterNumber = normalizeNumber(parseInt(chapterInput), 3);
       const verseNumber = normalizeNumber(parseInt(verseInput), 3);
-      window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&bible=${bookNumber}${chapterNumber}${verseNumber}&pub=nwtsty`);
+      window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&bible=${bookNumber}${chapterNumber}${verseNumber}&pub=nwtsty`;
     }
   } else if (matches.length > 1) {
     // Più libri trovati
