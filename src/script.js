@@ -66,45 +66,62 @@ const bibleBooks = [
   "Giuda",
   "Rivelazione",
 ];
+
 const outputParagraph = document.getElementById("output");
+
 function injectOutput(inject) {
   outputParagraph.innerText = inject;
 }
 
-function checkBibleBook() {
-  const originalInput = document.getElementById("input").value;
-  const sanitizedInput = originalInput
-    .toLowerCase()
-    .replace(/\s+/g, "")
-    .trim();
+function normalizeNumber(number, digits) {
+  return number.toString().padStart(digits, '0');
+}
 
-  // Trova tutti i libri che iniziano con la stringa inserita
+function checkBibleBook() {
+  const originalInput = document.getElementById("input").value.trim();
+  const [bookInput, chapterInput] = originalInput.split(" ").map(part => part.trim());
+
+  if (!bookInput) {
+    injectOutput("Inserisci il nome di un libro della Bibbia per continuare.");
+    return;
+  }
+
+  const sanitizedInput = bookInput
+    .toLowerCase()
+    .replace(/\s+/g, "");
+
   const matches = bibleBooks.filter((book) =>
     book.toLowerCase().replace(/\s+/g, "").startsWith(sanitizedInput)
   );
 
   if (matches.length === 1 || sanitizedInput === "salmo") {
-    if (sanitizedInput === "salmo") {
-      window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&book=19&pub=nwtsty`
-      return;
+    const bookName = sanitizedInput === "salmo" ? "Salmi" : matches[0];
+    const bookIndex = bibleBooks.indexOf(bookName);
+    const bookNumber = normalizeNumber(bookIndex + 1, 2);
+
+    if (!chapterInput || isNaN(chapterInput)) {
+      // Nessun capitolo specificato o valore non numerico, reindirizza solo al libro
+      window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&book=${bookNumber}&pub=nwtsty`;
+    } else {
+      // Capitolo specificato
+      const chapterNumber = normalizeNumber(parseInt(chapterInput), 3);
+      window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&bible=${bookNumber}${chapterNumber}001-${bookNumber}${chapterNumber}999&pub=nwtsty`;
     }
-      
-    // Un solo libro trovato: reindirizza
-    const bookIndex = bibleBooks.indexOf(matches[0]);
-    const bookNumber = bookIndex + 1; // Trasforma l'indice in numero (partendo da 1)
-    window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&book=${bookNumber}&pub=nwtsty`
   } else if (matches.length > 1) {
-    // Più libri trovati: mostra suggerimenti
-    injectOutput(`Il testo che hai fornito non è sufficiente a determinare che libro della Bibbia stavi cercando. Forse ti riferivi a:\n${matches.join(" - ")}`);
+    // Più libri trovati
+    injectOutput(
+      `Il testo fornito non è sufficiente a identificare un libro univoco. Forse intendevi: ${matches.join(" - ")}`
+    );
   } else {
-    // Nessun libro trovato
-    injectOutput("Libro non trovato. Assicurati di aver digitato il libro o le sue iniziali correttamente.")
+    // Nessuna corrispondenza
+    injectOutput(
+      "Il libro non è stato trovato. Verifica di aver scritto il nome del libro correttamente."
+    );
   }
 }
 
 // Event listener per il bottone "Cerca"
-const searchButton = document.getElementById("searchButton");
-searchButton.addEventListener("click", checkBibleBook);
+document.getElementById("searchButton").addEventListener("click", checkBibleBook);
 
 // Permette la ricerca premendo "Invio"
 document.addEventListener("keypress", (event) => {
