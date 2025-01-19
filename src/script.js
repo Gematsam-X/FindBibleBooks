@@ -86,6 +86,7 @@ function checkBibleBook() {
   if (matches.length === 1 || sanitizedInput === "salmo") {
     if (sanitizedInput === "salmo") {
       window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&book=19&pub=nwtsty`
+      return;
     }
       
     // Un solo libro trovato: reindirizza
