@@ -69,27 +69,28 @@ const bibleBooks = [
 
 const outputParagraph = document.getElementById("output");
 
-function injectOutput(inject) {
-  outputParagraph.innerText = inject;
+function injectOutput(message) {
+  outputParagraph.innerText = message;
 }
 
 function normalizeNumber(number, digits) {
-  return number.toString().padStart(digits, '0');
+  return number.toString().padStart(digits, "0");
 }
 
 function checkBibleBook() {
   const originalInput = document.getElementById("input").value.trim();
-  const [bookInput, chapterInput] = originalInput.split(" ").map(part => part.trim());
-
-  if (!bookInput) {
-    injectOutput("Inserisci il nome di un libro della Bibbia per continuare.");
+  if (!originalInput) {
+    injectOutput("Inserisci un riferimento biblico valido (es. Genesi 1:1 o Genesi 1 1).");
     return;
   }
 
-  const sanitizedInput = bookInput
-    .toLowerCase()
-    .replace(/\s+/g, "");
+  const parts = originalInput.split(/[\s:]+/); // Dividi su spazio o ":" 
+  const bookInput = parts[0].trim(); // Primo elemento: libro
+  const chapterInput = parts[1]?.trim(); // Secondo elemento: capitolo (se fornito)
+  const verseInput = parts[2]?.trim(); // Terzo elemento: versetto (se fornito)
 
+  // Validazione dell'input
+  const sanitizedInput = bookInput.toLowerCase().replace(/\s+/g, "");
   const matches = bibleBooks.filter((book) =>
     book.toLowerCase().replace(/\s+/g, "").startsWith(sanitizedInput)
   );
@@ -100,23 +101,24 @@ function checkBibleBook() {
     const bookNumber = normalizeNumber(bookIndex + 1, 2);
 
     if (!chapterInput || isNaN(chapterInput)) {
-      // Nessun capitolo specificato o valore non numerico, reindirizza solo al libro
+      // Nessun capitolo specificato o non valido
       window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&book=${bookNumber}&pub=nwtsty`;
-    } else {
-      // Capitolo specificato
+    } else if (!verseInput || isNaN(verseInput)) {
+      // Capitolo fornito senza versetto
       const chapterNumber = normalizeNumber(parseInt(chapterInput), 3);
       window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&bible=${bookNumber}${chapterNumber}000-${bookNumber}${chapterNumber}999&pub=nwtsty`;
+    } else {
+      // Capitolo e versetto forniti
+      const chapterNumber = normalizeNumber(parseInt(chapterInput), 3);
+      const verseNumber = normalizeNumber(parseInt(verseInput), 3);
+      window.location.href = `https://www.jw.org/finder?wtlocale=I&prefer=lang&bible=${bookNumber}${chapterNumber}${verseNumber}-${bookNumber}${chapterNumber}${verseNumber}&pub=nwtsty`;
     }
   } else if (matches.length > 1) {
     // Più libri trovati
-    injectOutput(
-      `Il testo fornito non è sufficiente a identificare un libro univoco. Forse intendevi: ${matches.join(" - ")}`
-    );
+    injectOutput(`Il testo fornito non è univoco. Forse intendevi: ${matches.join(" - ")}`);
   } else {
-    // Nessuna corrispondenza
-    injectOutput(
-      "Il libro non è stato trovato. Verifica di aver scritto il nome del libro correttamente."
-    );
+    // Nessun libro trovato
+    injectOutput("Il libro non è stato trovato. Verifica di aver scritto correttamente il nome del libro.");
   }
 }
 
