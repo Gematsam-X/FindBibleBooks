@@ -75,15 +75,15 @@ function checkBibleBook() {
   const originalInput = document.getElementById("input").value;
   const sanitizedInput = originalInput
     .toLowerCase()
-    .replace(/\s+/g, " ")
+    .replace(/\s+/g, "")
     .trim();
 
   // Trova tutti i libri che iniziano con la stringa inserita
   const matches = bibleBooks.filter((book) =>
-    book.toLowerCase().startsWith(sanitizedInput)
+    book.toLowerCase().replace(/\s+/g, "").startsWith(sanitizedInput)
   );
 
-  if (matches.length === 1) {
+  if (matches.length === 1 || sanitizedInput === "salmo") {
     // Un solo libro trovato: reindirizza
     const bookIndex = bibleBooks.indexOf(matches[0]);
     const bookNumber = bookIndex + 1; // Trasforma l'indice in numero (partendo da 1)
