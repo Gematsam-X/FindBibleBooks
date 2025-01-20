@@ -94,7 +94,10 @@ function checkBibleBook() {
   const matches = bibleBooks.filter((book) =>
     book.toLowerCase().replace(/\s+/g, "").startsWith(sanitizedInput)
   );
-
+  if (sanitizedInput === "") {
+    injectOutput("Digita il libro biblico ed eventualmente il capitolo e il versetto nel campo qua sopra.")
+    return;
+  }
   if (matches.length === 1 || sanitizedInput === "salmo") {
     const bookName = sanitizedInput === "salmo" ? "Salmi" : matches[0];
     const bookIndex = bibleBooks.indexOf(bookName);
